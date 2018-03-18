@@ -1,0 +1,36 @@
+<%%= form_for(<%= singular_table_name %>) do |f| %>
+  <%% if <%= singular_table_name %>.errors.any? %>
+    <div id="error_explanation" class="w3-animate-opacity f3 w3-text-red mx-multiply playfair-display">
+      <h2><%%= pluralize(<%= singular_table_name %>.errors.count, "error") %> prohibited this <%= singular_table_name %> from being saved:</h2>
+
+      <ul>
+      <%% <%= singular_table_name %>.errors.full_messages.each do |message| %>
+        <li><%%= message %></li>
+      <%% end %>
+      </ul>
+    </div>
+  <%% end %>
+
+<% attributes.each do |attribute| -%>
+  <div class="w3-panel">
+<% if attribute.password_digest? -%>
+    <%%= f.label :password , class:"playfair-display fw6 f1 lh-copy %>
+    <%%= f.password_field :password , class:"space-mono red w3-input w3-border" %>
+  </div>
+
+  <div>
+    <%%= f.label :password_confirmation , class:"playfair-display fw6 f1 lh-copy" %>
+    <%%= f.password_field :password_confirmation , class:"space-mono red w3-input w3-border" %>
+<% else -%>
+    <%%= f.label :<%= attribute.column_name , class:"playfair-display fw6 f1 lh-copy" %>
+    <%%= f.<%= attribute.field_type %> :<%= attribute.column_name %> , class:"bg-white-90 bg-blur-5 shadow-4 w3-input w3-border" %>
+<% end -%>
+  </div>
+
+<% end -%>
+  <div class="actions">
+    <%%= f.submit :Submit, 
+    class:"shadow-1 ttu f6 space-mono w3-mobile w3-button br-pill grow
+    w3-white w3-border w3-border-red w3-text-red w3-hover-red" %>
+  </div>
+<%% end %>

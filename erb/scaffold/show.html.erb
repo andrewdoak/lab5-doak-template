@@ -1,0 +1,73 @@
+<!--SHOW Template-->
+<header class="pt6 bg-photoshop vh-90 dt w-100 bb bw2 b--red shadow-4">
+    <div class="vh-75 dtc v-btm-ns v-mid tl pa4 pb6 pl6-m ph7-l">
+      
+      <p id="notice" class="f3 w3-text-red mx-multiply playfair-display" ><%= notice %></p>
+      
+      <h1 class="playfair-display black-70 fw7 b kern ligatures f-headline-ns f-subheadline-m measure lh-title pb4">
+        <span class="dn-s bg-blur-5 bg-white-70 lh-solid ph4 pb3 bt bw3 b--red shadow-4 w3-animate-top">
+          &nbsp;<%= singular_table_name %>.&nbsp;
+        </span>
+        
+         <span class="dn-ns mx-multiply lh-solid pb3 red w3-animate-top">
+          &nbsp;<%= singular_table_name %>.&nbsp;
+        </span>
+      </h1>
+      
+      <!--Large Breakpoints-->
+      <h5 class="space-mono ttu mt4 f6 black-80 tracked lh-copy w3-animate-top">
+        <span class="dn-s mt3 pa2 bg-blur-5 bg-white-70 ba bw1 b--red shadow-4">
+          Scroll down to view!
+        </span>
+        
+        <!--Medium & Small Breakpoints-->
+        <span class="dn-ns space-mono dn-l mv2 pv2 lh-title">
+          Scroll down to view.<br class="dn-ns">
+        </span>
+      </h5>
+      <br>
+        <i class="red w3-animate-opacity fl w30 pa1 material-icons">arrow_downward</i>
+    </div>
+</header>
+
+<!--QUOTES TABLE-->
+<article class="cf ph3 ph5-l ph4-m pv6">
+  <div class="flex justify-center pt5">
+    <!--Table width-->
+    <div class="w-50-l w-60-m w-90">
+      <table class="w3-animate-bottom pt3 w3-responsive pb6">
+        <tbody>
+        <tr>
+          <% attributes.reject(&:password_digest?).each do |attribute| -%>
+          <!--  <strong class="raleway fw6 f5 red">Title:</strong>-->
+          <td>
+            <span class="playfair-display red f1 lh-copy"><%= attribute.human_name %>:</span>
+          </td>
+        </tr>
+        
+        <tr>
+          <!--<td>-->
+          <!--  <strong class="v-top raleway fw6 f5 red measure">Description:</strong>-->
+          <!--</td>-->
+          <td class="ph4-ns pt4-ns">
+            <span class="eb-garamond f4 lh-copy measure mb3"><%%= @<%= singular_table_name %>.<%= attribute.name %> %></span>
+          </td>
+        </tr>
+        
+        <tr>
+        <td class="pv3">
+        <span class="">
+          <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) ,
+          class:"ph4-ns mh1 mv2 ttu tracked dib link w3-text-red grow w3-hover-none w3-hover-text-black f6 space-mono no-underline" %> 
+          <%%= link_to 'Back', <%= index_helper %>_path ,
+          class:"ph4-ns mh1 mv2 ttu tracked dib link w3-text-red grow w3-hover-none w3-hover-text-black f6 space-mono no-underline" %>
+        </span>
+        </td>
+        </tr>
+        </tbody>
+      </table>
+   </div>
+</div>
+</article>
+
+
